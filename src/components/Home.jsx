@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const Home = () => {
   const [originalUrl, setOriginalUrl] = useState("");
@@ -12,10 +13,10 @@ const Home = () => {
     if (!originalUrl) {
       return;
     }
-    const response = await axios.post("http://localhost:5002/shorten", {
+    const response = await axios.post(`${BASE_URL}/shorten`, {
       originalUrl,
     });
-    setShortUrl(`http://localhost:5002/${response.data.shortUrl}`);
+    setShortUrl(`${BASE_URL}/${response.data.shortUrl}`);
   };
 
   return (

@@ -1,7 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import PropTypes from "prop-types";
-// import { useEffect } from "react";
-// import axios from "axios";
+const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const Details = ({ urls }) => {
   const { id } = useParams();
@@ -9,14 +8,14 @@ const Details = ({ urls }) => {
   const urlArr = urls.filter((item) => item._id === id);
   const url = urlArr[0];
 
-//   useEffect(() => {
-//     const fetchUrls = async () => {
-//       const response = await axios.get("http://localhost:5002/dashboard");
-//       console.log("🚀 ~ fetchUrls ~ response:", response);
-//       setUrls(response.data);
-//     };
-//     fetchUrls();
-//   }, []);
+  //   useEffect(() => {
+  //     const fetchUrls = async () => {
+  //       const response = await axios.get(`${BASE_URL}/dashboard`);
+  //       console.log("🚀 ~ fetchUrls ~ response:", response);
+  //       setUrls(response.data);
+  //     };
+  //     fetchUrls();
+  //   }, []);
 
   return (
     <div>
@@ -26,8 +25,8 @@ const Details = ({ urls }) => {
       <h3>
         Short URL:
         <a
-          href={`http://localhost:5002/${url.shortUrl}`}
-        >{`http://localhost:5002/${url.shortUrl}`}</a>
+          href={`${BASE_URL}/${url.shortUrl}`}
+        >{`${BASE_URL}/${url.shortUrl}`}</a>
       </h3>
       <h4>Visits: {url.visits}</h4>
       {/* <button onClick={() => handleDelete(url._id)}>Delete</button> */}
